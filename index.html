@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Board Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Custom Bingo Board Generator</h1>
+    
+    <div class="controls">
+        <label for="boardSize">Select Board Size:</label>
+        <select id="boardSize">
+            <option value="1">1x1</option>
+            <option value="2">2x2</option>
+            <option value="3">3x3</option>
+            <option value="4">4x4</option>
+            <option value="5">5x5</option>
+        </select>
+    </div>
+
+    <div class="input-area" id="inputArea">
+        <!-- Input boxes will be generated here -->
+    </div>
+
+    <button id="generateButton">Generate Board</button>
+
+    <button id="generateInitialValuesButton">Generate Initial Values</button>
+
+    <canvas id="bingoCanvas" style="display: none;"></canvas>
+    
+    <button id="downloadButton" style="display: none;">Download Board as PNG</button>
+
+    <script src="./script.js"></script>
+</body>
+</html>
