@@ -1,6 +1,5 @@
 document.getElementById('generateButton').addEventListener('click', generateBoard);
 document.getElementById('boardSize').addEventListener('change', updateInputBoxes);
-document.getElementById('inputArea').addEventListener('click', handleInputAreaClick);
 document.getElementById('generateInitialValuesButton').addEventListener('click', generateInitialValues);
 document.getElementById('downloadButton').addEventListener('click', downloadBoard);
 
@@ -15,14 +14,6 @@ function updateInputBoxes() {
     }
 }
 
-function handleInputAreaClick(e) {
-    if (e.target.classList.contains('addPhrase')) {
-        addPhraseInput();
-    } else if (e.target.classList.contains('removePhrase')) {
-        removePhraseInput(e.target);
-    }
-}
-
 function addPhraseInput() {
     const phraseInputContainer = document.createElement('div');
     phraseInputContainer.classList.add('phrase-input');
@@ -32,31 +23,9 @@ function addPhraseInput() {
     inputField.className = 'phrase';
     inputField.placeholder = 'Enter a phrase...';
 
-    const addButton = document.createElement('button');
-    addButton.type = 'button';
-    addButton.className = 'addPhrase';
-    addButton.textContent = '+';
-
-    const removeButton = document.createElement('button');
-    removeButton.type = 'button';
-    removeButton.className = 'removePhrase';
-    removeButton.textContent = '-';
-    removeButton.style.display = 'inline-block';
-
     phraseInputContainer.appendChild(inputField);
-    phraseInputContainer.appendChild(addButton);
-    phraseInputContainer.appendChild(removeButton);
 
     document.getElementById('inputArea').appendChild(phraseInputContainer);
-}
-
-function removePhraseInput(button) {
-    const inputArea = document.getElementById('inputArea');
-    const size = parseInt(document.getElementById('boardSize').value);
-    const requiredPhrases = size * size + size;
-    if (inputArea.children.length > requiredPhrases) {
-        button.parentElement.remove();
-    }
 }
 
 function generateBoard() {
@@ -71,15 +40,15 @@ function generateBoard() {
 
     shuffleArray(phrases);
 
-    const canvas = document.getElementById('bingoCanvas');
-    const ctx = canvas.getContext('2d');
+    const bingoCanvas = document.getElementById('bingoCanvas');
+    const ctx = bingoCanvas.getContext('2d');
     const squareSize = 100;
-    canvas.width = size * squareSize;
-    canvas.height = size * squareSize;
+    bingoCanvas.width = size * squareSize;
+    bingoCanvas.height = size * squareSize;
 
     // Set background to white before drawing anything else
     ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, bingoCanvas.width, bingoCanvas.height);
 
     // Set text and border styles
     ctx.font = '14px Arial';
@@ -99,18 +68,18 @@ function generateBoard() {
         }
     }
 
-    canvas.style.display = 'block';
+    bingoCanvas.style.display = 'block';
     document.getElementById('downloadButton').style.display = 'block';
 }
 
 function downloadBoard() {
-    const canvas = document.getElementById('bingoCanvas');
-    if (!canvas) {
+    const bingoCanvas = document.getElementById('bingoCanvas');
+    if (!bingoCanvas) {
         alert("Canvas element not found. Please generate the board first.");
         return;
     }
 
-    const dataURL = canvas.toDataURL("image/png");
+    const dataURL = bingoCanvas.toDataURL("image/png");
 
     const link = document.createElement('a');
     link.download = 'bingo-board.png';
@@ -127,7 +96,6 @@ function downloadBoard() {
         colors: ['#bb0000', '#ffffff'],
     });
 }
-
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -150,3 +118,111 @@ function generateInitialValues() {
 
 // Automatically generate input boxes on page load based on the default board size
 updateInputBoxes();
+
+// Initialize particles.js
+particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        }
+      },
+      "opacity": {
+        "value": 0.3,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 0.5,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "grab"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 140,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  }
+);

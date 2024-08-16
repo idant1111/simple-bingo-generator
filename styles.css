@@ -1,33 +1,47 @@
-/* General Styles */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #282c34;
     color: #333;
-    margin: 20px;
+
     text-align: center;
+    overflow: hidden; /* Prevent scrollbars from appearing */
 }
 
 h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #4CAF50;
+    color: #ffffff;
+    position: relative;
+    z-index: 3;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #282c34;
+    background-size: cover;
+    z-index: 0;
 }
 
 .controls {
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 label {
     font-weight: bold;
     font-size: 1.1rem;
     margin-right: 10px;
+    color: #ffffff;
 }
 
 select {
     font-size: 1.1rem;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
 }
 
 .input-area {
@@ -35,6 +49,8 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 .phrase-input {
@@ -60,20 +76,13 @@ button {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 button:hover {
     background-color: #45a049;
     color: white;
-}
-
-.addPhrase, .removePhrase {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.addPhrase:hover, .removePhrase:hover {
-    background-color: #45a049;
 }
 
 #generateButton {
@@ -93,15 +102,18 @@ button:hover {
     display: none;
 }
 
-/* Canvas Styling */
-canvas {
+.canvas {
+    width: 100%;
+    height: 100%;
+}
+#bingoCanvas {
     margin-top: 20px;
     border: 2px solid #333;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 300;
 }
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .phrase-input {
         width: 100%;

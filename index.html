@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Container for the particles.js background -->
+    <div id="particles-js"></div>
+    
+    <!-- Cloud containers -->
+    
     <h1>Custom Bingo Board Generator</h1>
     
     <div class="controls">
         <label for="boardSize">Select Board Size:</label>
         <select id="boardSize">
+            <option value="1">1x1</option>
+            <option value="2">2x2</option>
             <option value="3">3x3</option>
             <option value="4">4x4</option>
             <option value="5">5x5</option>
+            <option value="6">6x6</option>
         </select>
     </div>
 
@@ -30,7 +38,8 @@
     
     <button id="downloadButton">Download Board as PNG</button>
 
-    <!-- Add the canvas-confetti library -->
+    <!-- Add the particles.js and canvas-confetti libraries -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
