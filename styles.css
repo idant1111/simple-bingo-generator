@@ -4,7 +4,7 @@ body {
     color: #333;
 
     text-align: center;
-    overflow: hidden; /* Prevent scrollbars from appearing */
+    /* overflow: hidden; Prevent scrollbars from appearing */
 }
 
 h1 {
