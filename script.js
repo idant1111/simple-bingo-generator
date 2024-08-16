@@ -118,7 +118,16 @@ function downloadBoard() {
     document.body.appendChild(link); // Append link to the body
     link.click(); // Simulate click to trigger download
     document.body.removeChild(link); // Remove link after triggering download
+
+    // Trigger confetti after the board has been downloaded
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#bb0000', '#ffffff'],
+    });
 }
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

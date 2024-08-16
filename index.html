@@ -12,8 +12,6 @@
     <div class="controls">
         <label for="boardSize">Select Board Size:</label>
         <select id="boardSize">
-            <option value="1">1x1</option>
-            <option value="2">2x2</option>
             <option value="3">3x3</option>
             <option value="4">4x4</option>
             <option value="5">5x5</option>
@@ -30,8 +28,10 @@
 
     <canvas id="bingoCanvas" style="display: none;"></canvas>
     
-    <button id="downloadButton" style="display: none;">Download Board as PNG</button>
+    <button id="downloadButton">Download Board as PNG</button>
 
-    <script src="./script.js"></script>
+    <!-- Add the canvas-confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
